@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+
+<html class="bg-surface" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"
+        name="viewport" />
+    <meta content="mobile_stack" name="shell-type" />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&amp;family=EB+Garamond:ital,wght@0,400..700;1,400..700&amp;family=Manrope:wght@300;400;500;600;700&amp;family=Playfair+Display:ital,wght@0,400..700;1,400..700&amp;family=Alex+Brush&amp;family=Pinyon+Script&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <style>
+        @layer base {
+
+            html,
+            body {
+                width: 100%;
+                min-height: 100%;
+                margin: 0;
+                padding: 0;
+                background-color: #f7f2ea;
+                color: #1d1b17;
+                -webkit-font-smoothing: antialiased;
+            }
+
+            body {
+                overscroll-behavior-y: none;
+            }
+
+            .pb-safe {
+                padding-bottom: env(safe-area-inset-bottom, 0px);
+            }
+
+            .pt-safe {
+                padding-top: env(safe-area-inset-top, 0px);
+            }
+        }
+
+        ::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Luxury Deckled Stationery Edge effect */
+        .deckled-card {
+            box-shadow:
+                0 1px 3px rgba(80, 50, 40, 0.05),
+                0 12px 36px rgba(119, 90, 0, 0.07),
+                inset 0 0 0 1px rgba(215, 193, 195, 0.4),
+                inset 0 0 45px rgba(254, 248, 241, 0.85);
+            border: 1px solid rgba(220, 190, 140, 0.35);
+        }
+
+        .blind-deboss-pattern {
+            filter: drop-shadow(0.5px 0.5px 0px rgba(255, 255, 255, 0.85)) drop-shadow(-0.5px -0.5px 0.5px rgba(140, 120, 105, 0.28));
+        }
+
+        .gold-foil-text {
+            background: linear-gradient(135deg, #a67c1e 0%, #d4af37 40%, #8c6716 75%, #b8860b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .gold-foil-rule {
+            background: linear-gradient(90deg, rgba(212, 175, 55, 0) 0%, rgba(212, 175, 55, 0.7) 50%, rgba(212, 175, 55, 0) 100%);
+        }
+
+        @keyframes subtleDrift {
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-3px) rotate(0.5deg);
+            }
+        }
+
+        .motion-drift {
+            animation: subtleDrift 8s ease-in-out infinite;
+        }
+    </style>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed": "#251a00",
+                        "on-tertiary-container": "#7e886e",
+                        "surface-dim": "#dfd9d2",
+                        "primary": "#070001",
+                        "outline": "#847375",
+                        "surface-container-highest": "#e7e2db",
+                        "on-secondary": "#ffffff",
+                        "surface": "#fbf7f0",
+                        "secondary": "#8c6b12",
+                        "background": "#f7f2ea",
+                        "on-surface-variant": "#5a4d4e",
+                        "surface-bright": "#fef8f1",
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed": "#161e0b",
+                        "primary-container": "#4a121e",
+                        "on-error-container": "#93000a",
+                        "primary-fixed-dim": "#ffb2be",
+                        "tertiary": "#010200",
+                        "secondary-container": "#f8e3a8",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-low": "#f9f4ed",
+                        "on-background": "#1d1b17",
+                        "error-container": "#ffdad6",
+                        "on-secondary-fixed-variant": "#5a4300",
+                        "inverse-primary": "#ffb2be",
+                        "surface-container": "#f4ede4",
+                        "inverse-surface": "#32302c",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-container": "#b7707d",
+                        "secondary-fixed-dim": "#e8c266",
+                        "on-primary": "#ffffff",
+                        "surface-container-high": "#eee7de",
+                        "on-secondary-container": "#785b01",
+                        "surface-variant": "#e7e2db",
+                        "outline-variant": "#d7c1c3",
+                        "tertiary-fixed": "#dce7c8",
+                        "inverse-on-surface": "#f6f0e9",
+                        "on-error": "#ffffff",
+                        "tertiary-container": "#161f0c",
+                        "on-primary-fixed-variant": "#6f3440",
+                        "on-primary-fixed": "#390916",
+                        "surface-tint": "#8b4b57",
+                        "tertiary-fixed-dim": "#c0cbad",
+                        "on-surface": "#1f1b19",
+                        "secondary-fixed": "#ffdf98",
+                        "on-tertiary-fixed-variant": "#404a34",
+                        "primary-fixed": "#ffd9de",
+                        "parchment-warm": "#fcf9f2",
+                        "royal-burgundy": "#49111c",
+                        "gold-accent": "#b88a24"
+                    },
+                    "fontFamily": {
+                        "serif-display": ["Cormorant Garamond", "serif"],
+                        "script": ["Pinyon Script", "Alex Brush", "cursive"],
+                        "editorial": ["Playfair Display", "serif"],
+                        "body": ["EB Garamond", "serif"],
+                        "sans-caps": ["Manrope", "sans-serif"]
+                    }
+                }
+            }
+        };
+    </script>
+</head>
+
+<body
+    class="bg-background min-h-screen flex flex-col items-center justify-start antialiased text-[#1d1b17] selection:bg-[#f3dfb2] selection:text-[#49111c]">
+    <!-- Mobile Container Strictly 390px -->
+    <div
+        class="w-full max-w-[390px] min-h-screen flex flex-col relative mx-auto bg-background px-3 py-4 shadow-[0_0_50px_rgba(0,0,0,0.06)]">
+        <!-- Top Floating Micro Bar (Monogram & Ambient Audio) -->
+        <header class="w-full z-40 flex items-center justify-between px-2 pt-2 pb-2">
+            <!-- Monogram / Folio Marker -->
+            <div class="flex items-center gap-2">
+                <span class="font-serif-display text-lg tracking-[0.2em] font-semibold text-royal-burgundy/90">Z <span
+                        class="text-gold-accent font-light italic">&amp;</span> H</span>
+                <span class="inline-block w-[1px] h-3 bg-secondary/30"></span>
+                <span
+                    class="font-sans-caps text-[10px] tracking-[0.25em] uppercase text-on-surface-variant/75 font-medium">IV
+                    • FOLIO</span>
+            </div>
+            <!-- Subtle sound / music pill toggle -->
+            <button aria-label="Toggle Shehnai Music"
+                class="group flex items-center gap-1.5 pl-2.5 pr-2.5 py-1 rounded-full bg-surface-container-lowest/80 border border-secondary/25 shadow-[0_1px_4px_rgba(0,0,0,0.03)] backdrop-blur-sm active:scale-95 transition-all"
+                id="sound-btn">
+                <span class="w-1.5 h-1.5 rounded-full bg-gold-accent animate-pulse"></span>
+                <span
+                    class="material-symbols-outlined text-[14px] text-gold-accent group-hover:rotate-12 transition-transform"
+                    id="sound-icon">music_note</span>
+                <span class="font-sans-caps text-[9px] uppercase tracking-[0.18em] text-royal-burgundy/80 font-semibold"
+                    id="sound-label">Shehnai</span>
+            </button>
+        </header>
+        <!-- Main Stationery Deckled Parchment Card -->
+        <main
+            class="flex-1 w-full flex flex-col relative deckled-card rounded-[14px] bg-[#fdfaf5] overflow-hidden my-1">
+            <!-- Subtle Handmade Organic Grain & Soft Vignette Layer -->
+            <div
+                class="pointer-events-none absolute inset-0 z-0 opacity-90 bg-[radial-gradient(#f4eedf_1px,transparent_1px)] [background-size:16px_16px]">
+            </div>
+            <!-- Gold Leaf Flecks (Bespoke scattered foils) -->
+            <div class="pointer-events-none absolute inset-0 z-0 overflow-hidden">
+                <div class="absolute top-10 left-6 w-1.5 h-1 rounded-full bg-[#dfb14a] opacity-40 rotate-45"></div>
+                <div class="absolute top-28 right-8 w-2 h-1 rounded-full bg-[#c9982f] opacity-35 -rotate-12"></div>
+                <div class="absolute top-64 left-10 w-1 h-1 rounded-full bg-[#e8c266] opacity-50"></div>
+                <div class="absolute top-80 right-12 w-2 h-1.5 rounded-full bg-[#dfb14a] opacity-30 rotate-30"></div>
+                <div class="absolute bottom-32 left-8 w-1.5 h-1 rounded-full bg-[#c9982f] opacity-40 -rotate-45"></div>
+                <div class="absolute bottom-16 right-9 w-2 h-1 rounded-full bg-[#e8c266] opacity-45 rotate-12"></div>
+            </div>
+            <!-- Blind Debossed Botanical Leaf Borders: Left Flank -->
+            <div
+                class="pointer-events-none absolute left-0 top-0 bottom-0 w-8 z-10 overflow-hidden flex flex-col justify-around py-8 select-none blind-deboss-pattern">
+                <svg class="w-full h-full text-[#cfc6b6]/45" fill="currentColor" preserveaspectratio="none"
+                    viewbox="0 0 32 500">
+                    <path
+                        d="M12 20 C22 28 26 44 14 55 C16 70 8 85 10 98 C18 108 24 122 13 134 C16 150 7 165 11 178 C20 188 24 204 12 216 C15 230 6 248 10 260 C21 270 25 286 13 298 C16 312 8 328 11 342 C20 354 24 370 12 382 C15 398 7 414 10 430 C20 442 22 458 12 470 L8 470 L8 20 Z">
+                    </path>
+                </svg>
+            </div>
+            <!-- Blind Debossed Botanical Leaf Borders: Right Flank (mirrored) -->
+            <div
+                class="pointer-events-none absolute right-0 top-0 bottom-0 w-8 z-10 overflow-hidden flex flex-col justify-around py-8 select-none blind-deboss-pattern scale-x-[-1]">
+                <svg class="w-full h-full text-[#cfc6b6]/45" fill="currentColor" preserveaspectratio="none"
+                    viewbox="0 0 32 500">
+                    <path
+                        d="M12 20 C22 28 26 44 14 55 C16 70 8 85 10 98 C18 108 24 122 13 134 C16 150 7 165 11 178 C20 188 24 204 12 216 C15 230 6 248 10 260 C21 270 25 286 13 298 C16 312 8 328 11 342 C20 354 24 370 12 382 C15 398 7 414 10 430 C20 442 22 458 12 470 L8 470 L8 20 Z">
+                    </path>
+                </svg>
+            </div>
+            <!-- Card Inner Border: Delicate Gilded Inset Frame -->
+            <div class="pointer-events-none absolute inset-2.5 rounded-[10px] border border-[#d8be87]/35 z-10"></div>
+            <div class="pointer-events-none absolute inset-3 rounded-[8px] border border-[#d8be87]/20 z-10"></div>
+            <!-- Core Invitation Typography & Content -->
+            <div class="relative z-20 flex-1 flex flex-col justify-between items-center text-center px-6 py-6 sm:px-8">
+                <!-- Top Gilded Crescent & Arabesque Floral Crest -->
+                <div class="flex flex-col items-center mt-1">
+                    <div class="relative w-11 h-11 flex items-center justify-center motion-drift">
+                        <svg class="w-10 h-10 drop-shadow-[0_1px_3px_rgba(184,138,36,0.35)]" fill="none"
+                            viewbox="0 0 54 54" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Intricate Gilded Arabesque Crescent -->
+                            <path
+                                d="M28 8C20 8 13.5 14.5 13.5 22.8C13.5 30.5 19.3 36.8 26.8 37.5C21.8 34.8 18.5 29.5 18.5 23.4C18.5 16.2 23.8 10.4 30.8 9.5C29.9 8.5 28.9 8 28 8Z"
+                                fill="url(#goldGradient)"></path>
+                            <!-- Radiant Star Inset -->
+                            <path
+                                d="M33 13L34.1 16.4L37.7 16.4L34.8 18.5L35.9 21.9L33 19.8L30.1 21.9L31.2 18.5L28.3 16.4L31.9 16.4Z"
+                                fill="url(#goldGradient)"></path>
+                            <!-- Bottom Symmetrical Foliage Flourish -->
+                            <path d="M17 40C22 37 26 38 27 42C24 43 19 43 17 40Z" fill="#b88a24" fill-opacity="0.8">
+                            </path>
+                            <path d="M37 40C32 37 28 38 27 42C30 43 35 43 37 40Z" fill="#b88a24" fill-opacity="0.8">
+                            </path>
+                            <circle cx="27" cy="44.5" fill="#a67c1e" r="1.5"></circle>
+                            <!-- Gradient Definition -->
+                            <defs>
+                                <lineargradient gradientunits="userSpaceOnUse" id="goldGradient" x1="12" x2="40" y1="8"
+                                    y2="44">
+                                    <stop stop-color="#cf9f38"></stop>
+                                    <stop offset="0.45" stop-color="#fae39b"></stop>
+                                    <stop offset="0.8" stop-color="#af8222"></stop>
+                                    <stop offset="1" stop-color="#846014"></stop>
+                                </lineargradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <!-- Fine ornament line -->
+                    <div class="w-16 h-[1px] gold-foil-rule mt-2 opacity-80"></div>
+                </div>
+                <!-- Section 1: Invitation Lead -->
+                <div class="w-full flex flex-col items-center mt-3">
+                    <span
+                        class="font-sans-caps text-[10px] tracking-[0.28em] uppercase font-medium gold-foil-text mb-2.5">
+                        TOGETHER WITH THEIR FAMILIES
+                    </span>
+                    <!-- Host Line: Mr. & Mrs. Muhammad Fiaz in regal Burgundy Serif -->
+                    <h1
+                        class="font-editorial text-[25px] sm:text-[27px] font-semibold text-royal-burgundy tracking-[-0.01em] leading-tight drop-shadow-[0_1px_1px_rgba(255,255,255,0.8)]">
+                        Mr. &amp; Mrs. Muhammad Fiaz
+                    </h1>
+                    <!-- Body Phrase in Cormorant Editorial Italic -->
+                    <div class="px-2 mt-2.5 max-w-[290px]">
+                        <p
+                            class="font-serif-display italic text-[15.5px] leading-[22px] text-on-surface-variant font-normal">
+                            cordially request the honour of your esteemed presence and heartfelt prayers at the
+                            solemnization of the Nikkah of their beloved daughter
+                        </p>
+                    </div>
+                </div>
+                <!-- Section 2: Gilded Statement & Couple Callout -->
+                <div class="w-full flex flex-col items-center my-3 relative py-2">
+                    <!-- Subtle Glow Accent Behind Names -->
+                    <div class="absolute w-36 h-20 rounded-full bg-secondary-container/25 blur-xl pointer-events-none">
+                    </div>
+                    <!-- Bride Name -->
+                    <div class="relative z-10 flex flex-col items-center">
+                        <h2
+                            class="font-editorial text-[31px] sm:text-[33px] font-normal text-royal-burgundy leading-[38px] tracking-[0.01em]">
+                            Zainab Fiaz
+                        </h2>
+                    </div>
+                    <!-- Conjunction "to" with fine flanked hairlines -->
+                    <div class="flex items-center justify-center gap-3 my-1 w-full max-w-[210px]">
+                        <div class="h-[1px] flex-1 gold-foil-rule"></div>
+                        <span
+                            class="font-serif-display italic text-[16px] text-gold-accent font-medium -translate-y-[1px]">
+                            to
+                        </span>
+                        <div class="h-[1px] flex-1 gold-foil-rule"></div>
+                    </div>
+                    <!-- Groom Name -->
+                    <div class="relative z-10 flex flex-col items-center">
+                        <h2
+                            class="font-editorial text-[27px] sm:text-[29px] font-medium text-royal-burgundy leading-[34px] tracking-[0.02em]">
+                            Dr. Hamza Younas
+                        </h2>
+                    </div>
+                </div>
+                <!-- Section 3: Sacred Verse / Footnote Badge -->
+                <div class="w-full flex flex-col items-center mb-1">
+                    <!-- Geometric Divider Motif -->
+                    <div class="flex items-center justify-center gap-2 mb-2.5 opacity-80">
+                        <div class="w-8 h-[0.75px] bg-secondary/35"></div>
+                        <span class="w-1.5 h-1.5 rotate-45 border border-gold-accent bg-background"></span>
+                        <div class="w-8 h-[0.75px] bg-secondary/35"></div>
+                    </div>
+                    <!-- Gold Ornament Badge -->
+                    <div
+                        class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#fdf7ec] border border-[#e2cca0] shadow-[0_1px_3px_rgba(119,90,0,0.06)]">
+                        <svg class="w-3 h-3 text-gold-accent" fill="currentColor" viewbox="0 0 24 24">
+                            <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z"></path>
+                        </svg>
+                        <span
+                            class="font-serif-display italic text-[14px] text-royal-burgundy font-medium tracking-[0.05em]">
+                            Bārakallāhu Lakumā
+                        </span>
+                        <svg class="w-3 h-3 text-gold-accent" fill="currentColor" viewbox="0 0 24 24">
+                            <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z"></path>
+                        </svg>
+                    </div>
+                    <!-- Sacred Verse Meaning in Micro Type -->
+                    <p
+                        class="font-sans-caps text-[8.5px] uppercase tracking-[0.16em] text-on-surface-variant/70 mt-2 font-medium">
+                        "May Allah bless for you and shower His blessings upon you"
+                    </p>
+                </div>
+            </div>
+            <!-- Bottom Edge Deckle Fringe Ornament -->
+            <div class="w-full h-1 bg-gradient-to-r from-transparent via-[#d8be87]/25 to-transparent"></div>
+        </main>
+        <!-- Bottom Discrete Ceremony Action / Nav Peek -->
+        <footer
+            class="w-full py-1.5 flex items-center justify-between px-2 text-[10px] font-sans-caps tracking-wider text-on-surface-variant/70">
+            <span class="flex items-center gap-1">
+                <span class="material-symbols-outlined text-[12px] text-gold-accent">favorite</span>
+                <span>RSVP REQUESTED</span>
+            </span>
+            <span class="uppercase tracking-widest text-[9px] text-secondary font-semibold">SWIPE FOR DETAILS →</span>
+        </footer>
+    </div>
+    <script>
+        // Discreet ambient music toggle handling
+        const soundBtn = document.getElementById('sound-btn');
+        const soundIcon = document.getElementById('sound-icon');
+        const soundLabel = document.getElementById('sound-label');
+        let soundPlaying = true;
+
+        if (soundBtn && soundIcon) {
+            soundBtn.addEventListener('click', () => {
+                soundPlaying = !soundPlaying;
+                if (soundPlaying) {
+                    soundIcon.textContent = 'music_note';
+                    soundLabel.textContent = 'Shehnai';
+                    soundBtn.classList.remove('opacity-50');
+                } else {
+                    soundIcon.textContent = 'music_off';
+                    soundLabel.textContent = 'Muted';
+                    soundBtn.classList.add('opacity-50');
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

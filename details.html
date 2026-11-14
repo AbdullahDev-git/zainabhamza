@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+
+<html class="bg-surface" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"
+        name="viewport" />
+    <meta content="mobile_stack" name="shell-type" />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&amp;family=EB+Garamond:ital,wght@0,400..700;1,400..700&amp;family=Manrope:wght@300;400;500;600;700&amp;family=Playfair+Display:ital,wght@0,400..700;1,400..700&amp;family=Alex+Brush&amp;family=Pinyon+Script&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <style>
+        @layer base {
+
+            html,
+            body {
+                width: 100%;
+                min-height: 100%;
+                margin: 0;
+                padding: 0;
+                background-color: #f7f2ea;
+                color: #1d1b17;
+                -webkit-font-smoothing: antialiased;
+            }
+
+            body {
+                overscroll-behavior-y: none;
+            }
+
+            .pb-safe {
+                padding-bottom: env(safe-area-inset-bottom, 0px);
+            }
+
+            .pt-safe {
+                padding-top: env(safe-area-inset-top, 0px);
+            }
+        }
+
+        ::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Luxury Deckled Stationery Edge effect */
+        .deckled-card {
+            box-shadow:
+                0 1px 3px rgba(80, 50, 40, 0.05),
+                0 12px 36px rgba(119, 90, 0, 0.07),
+                inset 0 0 0 1px rgba(215, 193, 195, 0.4),
+                inset 0 0 45px rgba(254, 248, 241, 0.85);
+            border: 1px solid rgba(220, 190, 140, 0.35);
+        }
+
+        .blind-deboss-pattern {
+            filter: drop-shadow(0.5px 0.5px 0px rgba(255, 255, 255, 0.85)) drop-shadow(-0.5px -0.5px 0.5px rgba(140, 120, 105, 0.28));
+        }
+
+        .gold-foil-text {
+            background: linear-gradient(135deg, #a67c1e 0%, #d4af37 40%, #8c6716 75%, #b8860b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .gold-foil-rule {
+            background: linear-gradient(90deg, rgba(212, 175, 55, 0) 0%, rgba(212, 175, 55, 0.7) 50%, rgba(212, 175, 55, 0) 100%);
+        }
+
+        @keyframes subtleDrift {
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-3px) rotate(0.5deg);
+            }
+        }
+
+        .motion-drift {
+            animation: subtleDrift 8s ease-in-out infinite;
+        }
+    </style>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed": "#251a00",
+                        "on-tertiary-container": "#7e886e",
+                        "surface-dim": "#dfd9d2",
+                        "primary": "#070001",
+                        "outline": "#847375",
+                        "surface-container-highest": "#e7e2db",
+                        "on-secondary": "#ffffff",
+                        "surface": "#fbf7f0",
+                        "secondary": "#8c6b12",
+                        "background": "#f7f2ea",
+                        "on-surface-variant": "#5a4d4e",
+                        "surface-bright": "#fef8f1",
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed": "#161e0b",
+                        "primary-container": "#4a121e",
+                        "on-error-container": "#93000a",
+                        "primary-fixed-dim": "#ffb2be",
+                        "tertiary": "#010200",
+                        "secondary-container": "#f8e3a8",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-low": "#f9f4ed",
+                        "on-background": "#1d1b17",
+                        "error-container": "#ffdad6",
+                        "on-secondary-fixed-variant": "#5a4300",
+                        "inverse-primary": "#ffb2be",
+                        "surface-container": "#f4ede4",
+                        "inverse-surface": "#32302c",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-container": "#b7707d",
+                        "secondary-fixed-dim": "#e8c266",
+                        "on-primary": "#ffffff",
+                        "surface-container-high": "#eee7de",
+                        "on-secondary-container": "#785b01",
+                        "surface-variant": "#e7e2db",
+                        "outline-variant": "#d7c1c3",
+                        "tertiary-fixed": "#dce7c8",
+                        "inverse-on-surface": "#f6f0e9",
+                        "on-error": "#ffffff",
+                        "tertiary-container": "#161f0c",
+                        "on-primary-fixed-variant": "#6f3440",
+                        "on-primary-fixed": "#390916",
+                        "surface-tint": "#8b4b57",
+                        "tertiary-fixed-dim": "#c0cbad",
+                        "on-surface": "#1f1b19",
+                        "secondary-fixed": "#ffdf98",
+                        "on-tertiary-fixed-variant": "#404a34",
+                        "primary-fixed": "#ffd9de",
+                        "parchment-warm": "#fcf9f2",
+                        "royal-burgundy": "#49111c",
+                        "gold-accent": "#b88a24"
+                    },
+                    "fontFamily": {
+                        "serif-display": ["Cormorant Garamond", "serif"],
+                        "script": ["Pinyon Script", "Alex Brush", "cursive"],
+                        "editorial": ["Playfair Display", "serif"],
+                        "body": ["EB Garamond", "serif"],
+                        "sans-caps": ["Manrope", "sans-serif"]
+                    }
+                }
+            }
+        };
+    </script>
+</head>
+
+<body
+    class="bg-background min-h-screen flex flex-col items-center justify-start antialiased text-[#1d1b17] selection:bg-[#f3dfb2] selection:text-[#49111c]">
+    <!-- Mobile Container Strictly 390px -->
+    <div
+        class="w-full max-w-[390px] min-h-screen flex flex-col relative mx-auto bg-background px-3 py-4 shadow-[0_0_50px_rgba(0,0,0,0.06)]">
+        <!-- Top Floating Micro Bar (Monogram & Ambient Audio) -->
+        <header class="w-full z-40 flex items-center justify-between px-2 pt-2 pb-2">
+            <!-- Monogram / Folio Marker -->
+            <div class="flex items-center gap-2">
+                <span class="font-serif-display text-lg tracking-[0.2em] font-semibold text-royal-burgundy/90">Z <span
+                        class="text-gold-accent font-light italic">&amp;</span> H</span>
+                <span class="inline-block w-[1px] h-3 bg-secondary/30"></span>
+                <span
+                    class="font-sans-caps text-[10px] tracking-[0.25em] uppercase text-on-surface-variant/75 font-medium">IV
+                    • FOLIO</span>
+            </div>
+            <!-- Subtle sound / music pill toggle -->
+            <button aria-label="Toggle Shehnai Music"
+                class="group flex items-center gap-1.5 pl-2.5 pr-2.5 py-1 rounded-full bg-surface-container-lowest/80 border border-secondary/25 shadow-[0_1px_4px_rgba(0,0,0,0.03)] backdrop-blur-sm active:scale-95 transition-all"
+                id="sound-btn">
+                <span class="w-1.5 h-1.5 rounded-full bg-gold-accent animate-pulse"></span>
+                <span
+                    class="material-symbols-outlined text-[14px] text-gold-accent group-hover:rotate-12 transition-transform"
+                    id="sound-icon">music_note</span>
+                <span class="font-sans-caps text-[9px] uppercase tracking-[0.18em] text-royal-burgundy/80 font-semibold"
+                    id="sound-label">Shehnai</span>
+            </button>
+        </header>
+        <!-- Main Stationery Deckled Parchment Card -->
+        <main
+            class="flex-1 w-full flex flex-col relative deckled-card rounded-[14px] bg-[#fdfaf5] overflow-hidden my-1">
+            <div class="flex flex-col w-full text-on-surface select-none pb-6">
+                <!-- Illuminated Heading: AQD-E-NIKKAH / Sacred Covenant -->
+                <div class="flex flex-col items-center justify-center text-center px-4 pt-3 pb-2 relative">
+                    <!-- Top Debossed Micro Vignette -->
+                    <div class="flex items-center justify-center gap-2 mb-1.5 opacity-80">
+                        <span class="w-6 h-[1px] bg-secondary-container"></span>
+                        <span class="text-secondary text-[10px] tracking-[0.3em] font-label-caps uppercase">Surah An-Nur
+                            · Chapter of Light</span>
+                        <span class="w-6 h-[1px] bg-secondary-container"></span>
+                    </div>
+                    <!-- Sacred Arabic Calligraphy Deboss -->
+                    <h2
+                        class="text-[26px] leading-[34px] font-display-bismillah tracking-widest text-primary-container font-medium">
+                        عَقْدُ النِّكَاح
+                    </h2>
+                    <!-- Subtitle in Foil & Caps -->
+                    <div class="flex items-center gap-2 mt-0.5">
+                        <span class="h-[1px] w-4 bg-secondary"></span>
+                        <span
+                            class="font-label-caps text-label-caps text-secondary font-semibold uppercase tracking-[0.24em]">
+                            Aqd-e-Nikkah · Solemnization
+                        </span>
+                        <span class="h-[1px] w-4 bg-secondary"></span>
+                    </div>
+                </div>
+                <!-- Featured Artwork: Arched Nikahnama Signing Plate (Inspiration Image) -->
+                <div class="px-4 py-2 relative w-full flex flex-col items-center">
+                    <div
+                        class="relative w-full rounded-t-[110px] rounded-b-[18px] p-2 bg-gradient-to-b from-[#fbf5ed] via-surface-container-low to-surface-container shadow-md">
+                        <!-- Inner Arch Inset Framing with blind gold line -->
+                        <div
+                            class="relative w-full overflow-hidden rounded-t-[102px] rounded-b-[14px] bg-surface shadow-sm">
+                            <img alt="Hands signing the golden Nikahnama contract"
+                                class="w-full h-[210px] object-cover object-center transform hover:scale-[1.02] transition-transform duration-700 ease-out"
+                                src="https://lh3.googleusercontent.com/aida/ALJJyrDdW0jeBGkhbjy2k5nm4S9Y1bPo-VSyyUtebkjzI0u9YgDzAYeGbEfEKE-j932UczQ35eiuR5m0kwnWYkBC2GoeZwp14Tq39iOaMTgBFowbFi--SP33Yfek9hYWMz0hGfLh0XXEnUhltHb5gDrMGE4jsVW0zXltDjI_QHuMnVPuyCt4TWLRyZM9mYUwwoShyLLHDszb3gS0F4Dg6kwrWPfQ-237_VTN9mXTGHVtYS-z" />
+                            <!-- Soft Inner Warm Glow Vignette Overlay -->
+                            <div
+                                class="absolute inset-0 pointer-events-none bg-gradient-to-t from-primary-container/20 via-transparent to-primary-container/10">
+                            </div>
+                            <div
+                                class="absolute inset-0 pointer-events-none rounded-t-[102px] rounded-b-[14px] shadow-[inset_0_0_18px_rgba(119,90,0,0.18)]">
+                            </div>
+                            <!-- Bottom Floating Label Plaque -->
+                            <div
+                                class="absolute bottom-2 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full bg-surface/90 shadow-sm backdrop-blur-md flex items-center gap-1.5">
+                                <span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                                <span
+                                    class="font-label-caps text-[9px] uppercase tracking-[0.2em] text-primary-container font-semibold">The
+                                    Signing of the Sacred Bond</span>
+                            </div>
+                        </div>
+                        <!-- Ornamental Golden Corner Motifs (Mughal Arabesque accents) -->
+                        <div class="absolute -top-1 -left-1 w-6 h-6 pointer-events-none opacity-70">
+                            <svg class="w-full h-full text-secondary" fill="none" viewbox="0 0 24 24">
+                                <path
+                                    d="M2 2C8 2 12 6 12 12C12 6 16 2 22 2C22 8 18 12 12 12C18 12 22 16 22 22C16 22 12 18 12 12C12 18 8 22 2 22C2 16 6 12 12 12C6 12 2 8 2 2Z"
+                                    fill="currentColor" fill-opacity="0.35"></path>
+                            </svg>
+                        </div>
+                        <div class="absolute -top-1 -right-1 w-6 h-6 pointer-events-none opacity-70 rotate-90">
+                            <svg class="w-full h-full text-secondary" fill="none" viewbox="0 0 24 24">
+                                <path
+                                    d="M2 2C8 2 12 6 12 12C12 6 16 2 22 2C22 8 18 12 12 12C18 12 22 16 22 22C16 22 12 18 12 12C12 18 8 22 2 22C2 16 6 12 12 12C6 12 2 8 2 2Z"
+                                    fill="currentColor" fill-opacity="0.35"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <!-- Editorial Ceremony Cards Grid -->
+                <div class="px-4 pt-3 flex flex-col gap-3">
+                    <!-- 1. The Solemnization Date Card -->
+                    <div
+                        class="w-full rounded-xl bg-surface-container-low p-4 shadow-sm relative overflow-hidden flex flex-col items-center text-center">
+                        <div
+                            class="absolute top-0 inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-secondary/40 to-transparent">
+                        </div>
+                        <span
+                            class="font-label-caps text-label-caps uppercase tracking-[0.22em] text-secondary font-semibold mb-1 flex items-center gap-1.5">
+                            <span class="material-symbols-outlined text-[13px] text-secondary">event_available</span>
+                            The Solemnization Date
+                        </span>
+                        <p
+                            class="font-headline-md text-headline-md text-primary-container font-medium mt-0.5 tracking-wide">
+                            Saturday, 20 December 2026
+                        </p>
+                        <div
+                            class="mt-1 flex items-center justify-center gap-2 text-on-surface-variant font-body-sm text-body-sm italic">
+                            <span>10th of Rajab, 1448 AH</span>
+                            <span class="w-1 h-1 rounded-full bg-secondary opacity-60"></span>
+                            <span>Auspicious Evening</span>
+                        </div>
+                    </div>
+                    <!-- 2. Auspicious Time & Walima Split Section -->
+                    <div class="w-full grid grid-cols-1 gap-2.5">
+                        <!-- Time Precision Block -->
+                        <div class="rounded-xl bg-surface-container-low/90 p-3.5 shadow-sm flex items-start gap-3">
+                            <div
+                                class="w-9 h-9 rounded-full bg-secondary-container/30 flex items-center justify-center shrink-0 text-primary-container mt-0.5">
+                                <span class="material-symbols-outlined text-[19px] text-secondary"
+                                    style="font-variation-settings: 'FILL' 1;">schedule</span>
+                            </div>
+                            <div class="flex flex-col min-w-0">
+                                <span
+                                    class="font-label-caps text-[10px] uppercase tracking-[0.2em] text-secondary font-semibold">
+                                    Auspicious Time
+                                </span>
+                                <p
+                                    class="font-headline-cover-mobile text-[19px] leading-tight text-primary-container mt-0.5 font-medium">
+                                    7:00 PM Sharp
+                                </p>
+                                <p class="font-body-sm text-[13px] leading-snug text-on-surface-variant mt-0.5">
+                                    Guests graciously requested by <span
+                                        class="font-semibold text-primary-container">6:30 PM</span> for congregational
+                                    Adhan &amp; Dua.
+                                </p>
+                            </div>
+                        </div>
+                        <!-- Banquet Celebration Block -->
+                        <div class="rounded-xl bg-surface-container-low/90 p-3.5 shadow-sm flex items-start gap-3">
+                            <div
+                                class="w-9 h-9 rounded-full bg-secondary-container/30 flex items-center justify-center shrink-0 text-primary-container mt-0.5">
+                                <span class="material-symbols-outlined text-[19px] text-secondary"
+                                    style="font-variation-settings: 'FILL' 1;">restaurant_menu</span>
+                            </div>
+                            <div class="flex flex-col min-w-0">
+                                <span
+                                    class="font-label-caps text-[10px] uppercase tracking-[0.2em] text-secondary font-semibold">
+                                    Banquet Celebration
+                                </span>
+                                <p
+                                    class="font-headline-cover-mobile text-[17px] leading-snug text-primary-container mt-0.5 font-medium">
+                                    Royal Walima Reception
+                                </p>
+                                <p class="font-body-sm text-[13px] leading-snug text-on-surface-variant mt-0.5">
+                                    Followed immediately by Traditional Dastarkhwan feast &amp; family felicitation.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Interactive Primary Action: Add to Sacred Calendar Button -->
+                <div class="px-4 pt-4 pb-2 w-full flex flex-col items-center">
+                    <button
+                        class="group w-full py-3.5 px-6 rounded-full bg-primary-container text-on-primary shadow-lg hover:shadow-xl active:scale-[0.98] transition-all duration-200 flex items-center justify-center gap-2.5 relative overflow-hidden"
+                        id="calendar-cta" type="button">
+                        <!-- Gold Rim Shimmer Effect -->
+                        <span
+                            class="absolute inset-0 bg-gradient-to-r from-transparent via-secondary-container/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"></span>
+                        <!-- Calendar Icon with Specular Golden Glow -->
+                        <span
+                            class="material-symbols-outlined text-[19px] text-secondary-fixed transition-transform group-hover:rotate-6"
+                            style="font-variation-settings: 'FILL' 1;">
+                            calendar_month
+                        </span>
+                        <!-- Label -->
+                        <span
+                            class="font-label-caps text-label-caps uppercase tracking-[0.2em] text-surface font-semibold">
+                            Add to Sacred Calendar
+                        </span>
+                    </button>
+                    <!-- Feedback notification after click -->
+                    <p class="hidden mt-2 font-label-caps text-[11px] tracking-wider text-secondary uppercase font-semibold transition-opacity duration-300"
+                        id="calendar-toast">
+                        ✦ Event Reminders Added to Device ✦
+                    </p>
+                </div>
+                <!-- Sacred Quranic Ayat Blessing Ribbon -->
+                <div class="px-5 pt-3 pb-1 flex flex-col items-center text-center">
+                    <div class="w-12 h-[1px] bg-secondary/30 mb-2"></div>
+                    <p
+                        class="font-body-lg text-[18px] leading-[26px] text-primary-container italic font-light tracking-wide">
+                        “And We created you in pairs”
+                    </p>
+                    <p class="font-label-caps text-[10px] tracking-[0.22em] text-secondary font-medium uppercase mt-1">
+                        — Surah An-Naba 78:8 —
+                    </p>
+                </div>
+            </div>
+            <!-- Micro-Interaction Script for Calendar CTA -->
+            <script>
+                const calBtn = document.getElementById('calendar-cta');
+                const calToast = document.getElementById('calendar-toast');
+                if (calBtn && calToast) {
+                    calBtn.addEventListener('click', () => {
+                        calToast.classList.remove('hidden');
+                        calToast.style.opacity = '1';
+                        setTimeout(() => {
+                            calToast.style.opacity = '0';
+                            setTimeout(() => calToast.classList.add('hidden'), 300);
+                        }, 3500);
+                    });
+                }
+            </script>
+        </main>
+        <!-- Bottom Discrete Ceremony Action / Nav Peek -->
+        <footer
+            class="w-full py-1.5 flex items-center justify-between px-2 text-[10px] font-sans-caps tracking-wider text-on-surface-variant/70">
+            <span class="flex items-center gap-1">
+                <span class="material-symbols-outlined text-[12px] text-gold-accent">favorite</span>
+                <span>RSVP REQUESTED</span>
+            </span>
+            <span class="uppercase tracking-widest text-[9px] text-secondary font-semibold">SWIPE FOR DETAILS →</span>
+        </footer>
+    </div>
+    <script>
+        // Discreet ambient music toggle handling
+        const soundBtn = document.getElementById('sound-btn');
+        const soundIcon = document.getElementById('sound-icon');
+        const soundLabel = document.getElementById('sound-label');
+        let soundPlaying = true;
+
+        if (soundBtn && soundIcon) {
+            soundBtn.addEventListener('click', () => {
+                soundPlaying = !soundPlaying;
+                if (soundPlaying) {
+                    soundIcon.textContent = 'music_note';
+                    soundLabel.textContent = 'Shehnai';
+                    soundBtn.classList.remove('opacity-50');
+                } else {
+                    soundIcon.textContent = 'music_off';
+                    soundLabel.textContent = 'Muted';
+                    soundBtn.classList.add('opacity-50');
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
