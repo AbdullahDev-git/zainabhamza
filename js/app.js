@@ -32,10 +32,20 @@
   const calendarClose = document.getElementById("calendar-close");
 
   // ---- Music ----
+  // Loop handler: restart from offset when audio ends
+  audio.addEventListener("ended", () => {
+    if (CFG.music.startOffset) {
+      audio.currentTime = CFG.music.startOffset;
+    } else {
+      audio.currentTime = 0;
+    }
+    audio.play().catch(() => {});
+  });
+
   function startAudio() {
     if (audioStarted) return;
     audio.volume = CFG.music.volume || 0.8;
-    // Start 3 seconds before lyrics (skip long intro)
+    // Start from offset (skip intro)
     if (CFG.music.startOffset) {
       audio.currentTime = CFG.music.startOffset;
     }
@@ -350,7 +360,22 @@
       if (stored === "1") isMuted = true;
     } catch (e) {}
 
+    // Try to play immediately
     startAudio();
+
+    // Try again when audio is ready
+    audio.addEventListener("canplay", () => {
+      if (!audioStarted) startAudio();
+    }, { once: true });
+
+    audio.addEventListener("loadeddata", () => {
+      if (!audioStarted) startAudio();
+    }, { once: true });
+
+    // Also try on window load
+    window.addEventListener("load", () => {
+      if (!audioStarted) startAudio();
+    });
 
     const gestureEvents = ["pointerup", "touchend", "click", "keydown"];
     function onGesture() {

@@ -536,6 +536,14 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
    ============================================================ */
 #invitation {
   background: var(--background);
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1.2s var(--ease-out), transform 1.2s var(--ease-out);
+}
+
+#invitation.revealed {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .invite-container {
@@ -1659,6 +1667,48 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   color: var(--on-surface-variant);
   text-align: center;
   padding: 0 8px;
+}
+
+.closing-animated-line {
+  width: 100%;
+  max-width: 200px;
+  height: 2px;
+  margin: 16px auto 0;
+  position: relative;
+  overflow: hidden;
+  border-radius: 1px;
+}
+
+.closing-animated-line::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, var(--gold-base), transparent);
+  animation: lineGrow 2s var(--ease-out) forwards;
+}
+
+.closing-line-glow {
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
+  animation: lineShimmer 3s ease-in-out infinite 2s;
+}
+
+@keyframes lineGrow {
+  0% { transform: scaleX(0); opacity: 0; }
+  100% { transform: scaleX(1); opacity: 1; }
+}
+
+@keyframes lineShimmer {
+  0% { left: -50%; opacity: 0; }
+  50% { opacity: 1; }
+  100% { left: 150%; opacity: 0; }
 }
 
 .closing-dua-ref {

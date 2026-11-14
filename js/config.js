@@ -12,10 +12,10 @@ window.INVITATION_CONFIG = {
     name: "Nikkah",
     day: "Saturday",
     date: "21 November 2026",
-    time: "7:00 PM",
-    arrivalTime: "6:30 PM",
+    time: "2:00 PM",
+    arrivalTime: "1:30 PM",
     timezone: "Asia/Karachi",
-    isoDate: "2026-11-21T19:00:00+05:00",
+    isoDate: "2026-11-21T14:00:00+05:00",
     venue: "Royal Rose Marquee & Marriage Hall",
     address: "Kharian Road, opposite Darul Uloom, Kharlanwala, Mandi Bahauddin, Punjab, Pakistan",
     mapsUrl: "https://maps.app.goo.gl/sNkVE7pmmEYzhKSF6",
@@ -24,7 +24,7 @@ window.INVITATION_CONFIG = {
   music: {
     file: "Dilpreet%20Bhatia%20-%20Pata%20Ni.mp3",
     volume: 0.8,
-    startOffset: 0
+    startOffset: 15
   },
   closing: {
     dua: "May Allah bless you, shower His blessings upon you, and bring you both together in goodness.",
